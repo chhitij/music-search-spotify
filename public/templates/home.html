@@ -1,0 +1,101 @@
+<!-- main container start -->
+<div class="main-container">
+  <!--  Banner Container -->
+  <div class="banner-container gradiant-common">
+    <div class="header flex horizontal-align-between">
+      <div class="logo">
+        <img src="./public/images/gl-logo@2x.png">
+      </div>
+      <div class="powered-by">
+        <b>Powered by Spotify</b>
+      </div>
+    </div>
+    <div class="hero-img flex layout-column vertical-align-center">
+      <img src="./public/images/hero-img@2x.png">
+      <img src="./public/images/Page 1@2x.png" class="page-icon">
+    </div>
+  </div>
+
+   <!--search for artist album-->
+   <div class="search-container"
+       ng-class="{hasResults: ctrl.results.length}">
+     <div class="horizontal-align-cente artist-search">
+       <form>
+         <input type="search" ng-model="ctrl.searchString"
+                placeholder="Search for artist or album title"/>
+         <input type="submit" ng-click="ctrl.getSongs(false)" class= "gradiant-common" value="SEARCH">
+       </form>
+     </div>
+   </div>
+
+   <!--Result appear container-->
+   <div class="result-default flex
+      vertical-align-center
+      layout-column horizontal-align-center"
+      ng-if="!ctrl.results.length">
+     <img src="./public/images/Magnify@2x.png">
+     <p>Your Result will appear here</p>
+   </div>
+
+   <!-- Item list container -->
+   <div class="flex item-list-container
+       wrap-onto-multiple horizontal-align-around"
+      ng-if="ctrl.results.length">
+     <div class="card flex layout-column"
+          ng-repeat="result in ctrl.results">
+       <div class="image" ng-click="ctrl.trackType(result)">
+         <img ng-src="{{result.images[1].url}}">
+         <img src="./public/images/Bitmap@2x.png" class="hover-poster" />
+         <div class="track-title hover-poster">View
+          {{result.type.substring(0, 1) | uppercase }}{{result.type.substring(1)}}
+          </div>
+       </div>
+       <div class="icon"><img ng-src="./public/images/{{result.type}}-icon@2x.png"/></div>
+       <div class="name">{{result.name}}</div>
+     </div>
+   </div>
+
+   <div class="show-more flex horizontal-align-center" ng-if="ctrl.results.length">
+      <input type="submit"
+        ng-click="ctrl.loadMore()"
+        class= "gradiant-common " value="SHOW ME MORE">
+    </div>
+
+
+    <!-- Track model -->
+    <div id="trackModel" class="track-modal" ng-click="ctrl.closeModel();">
+      <!-- Track Model content -->
+        <div class="track-content flex layout-column">
+           <div class="img-title-section" ng-style="{'background-image': 'url(' + ctrl.selectedItem.images[0]['url'] + ')'}">
+              <span class="close"  ng-click="ctrl.closeModel();">
+              <img src="./public/images/Cross@2x.png"/>
+              </span>
+              <p>{{ctrl.selectedItem.name}}</p>
+           </div>
+           <div class="track-list-container flex layout-column">
+             <h1 ng-if="ctrl.selectedItem.type=='artist'">Albums</h1>
+             <h1 ng-if="ctrl.selectedItem.type=='album'">Tracks</h1>
+             <div class="divider"></div>
+
+             <div class="album-track-list flex"
+               ng-class="{hasTrack:ctrl.selectedItem.type=='album'}"
+               ng-repeat="albumtrack in ctrl.albumTrackList">
+               <img ng-if="ctrl.selectedItem.type=='artist'"
+                    ng-src="{{albumtrack.images[2].url}}">
+               <div class="discription flex flexval">{{albumtrack.name}}</div>
+               <audio-player ng-if="ctrl.selectedItem.type=='album'"
+               src="{{ctrl.getSanitizedUrl(albumtrack.preview_url)}}"></audio-player>
+             </div>
+
+           </div>
+        </div>
+    </div>
+
+   <!--Result appear container-->
+   <div class="flex vertical-align-center footer
+      layout-column horizontal-align-center"
+      ng-class="{hasResults: ctrl.results.length}">
+     <p><span>Designed by Geek Label<span> <span>Powered by Spotify<span></p>
+   </div>
+
+</div>

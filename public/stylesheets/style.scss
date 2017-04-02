@@ -1,0 +1,140 @@
+@font-face {
+  font-family: raleway;
+  src: url(../fonts/raleway/Raleway-Light.ttf);
+}
+@font-face {
+  font-family: raleway-bold;
+  src: url(../fonts/raleway/Raleway-Bold.ttf);
+}
+
+body {
+  color: #fff;
+  background-color: #333441;
+  font-family: raleway;
+  margin: 0 auto;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.gradiant-common {
+  background: linear-gradient(#c8437b, #bd446c 50%, #b2455d);
+}
+
+/*banner-container start */
+
+.main-container {
+  width: 78%;
+  margin: 0 auto;
+  .banner-container {
+    min-height: 56vh;
+    .header {
+      padding: 2% 2% 0;
+
+      img {
+       width: 80px;
+     }
+
+     .powered-by{
+      font-size:15px;
+     }
+    }
+    .hero-img img {
+      height: 48vh;
+      width: 36vw;
+    }
+    .hero-img img.page-icon {
+       width: auto;
+       height: 64px;
+    }
+  }
+   .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px;
+    .artist-search {
+      border-radius: 25px;
+      padding: 3px;
+      background: #fff;
+    }
+   }
+
+   .search-container input[type="search"] {
+    width: 500px;
+    height: 29px;
+    color: #676565;
+    border-radius: 21px;
+    border: #ffdead;
+    letter-spacing: 2px;
+    padding: 7px 15px;
+    outline: none;
+  }
+
+  .result-default {
+    min-height: 25vh;
+    background: rgb(56, 58, 73);
+    img {
+      width: 150px;
+    }
+    p {
+      color: rgb(83, 83, 83);
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .item-list-container  {
+     margin: 0 45px;
+    .track-title {
+    height: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    top: 78%;
+    left: 29%;
+    color: rgba(100, 98, 97, 0.87);
+    }
+  }
+
+  .hasResults {
+    background: rgb(56, 58, 73)
+  }
+  .hasTrack {
+     flex-direction: column;
+  }
+  .hasTrack:hover{
+     background: #e1e1e1;
+  }
+  .track-modal {
+    .track-content {
+      .img-title-section {
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        flex:2;
+      }
+      p {
+        position: absolute;
+        bottom: 0;
+        padding: 5px;
+        font-size: 20px;
+        color: #e1e1e;
+        font-weight: bold;
+      }
+      .track-list-container {
+         flex:3;
+      }
+    }
+  }
+
+}
+
+.show-more {
+   padding-bottom: 16px;
+  }
+
